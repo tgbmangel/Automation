@@ -1,14 +1,16 @@
 # coding=utf-8
 from time import sleep
 from project_vis.pages.login.login_page import LoginPage
-from project_vis.base_vis.vis_unittest import VisUnitTestCase
+from project_vis.base_vis.vis_unittest import *
 class Caselogin(VisUnitTestCase):
     '''登录测试'''
     def setUp(self):
         ''' 教育网页-登录页测试用例 '''
+        self.logger_self_class()
         self.url = "http://{}/views/index.html#/login".format(self.host_manage_page)
         self.username = u"admin"
         self.password = "123456"
+    @record_func
     def test_login(self):
         '''正常登录'''
         loginpage=LoginPage(self.driver, self.url, "智慧城市运营管理系统")
