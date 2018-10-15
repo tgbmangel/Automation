@@ -99,6 +99,18 @@ class BasePage(object):
         except Exception as e:
             self.logger.error(e)
             print(u"%s 页面中未能找到 %s 元素" % (self,xpath))
+    def get_element_by_xpath_from_element(self,xpath,element):
+        '''
+        封装常用方法：xpath
+        :param xpath: 网页元素的xpath，通过F12查看，右键copy Xpath即可
+        :param element 网页上的element对象
+        :return: 返回element对象
+        '''
+        try:
+            return element.find_element_by_xpath(xpath)
+        except Exception as e:
+            self.logger.error(e)
+            print(u"%s 页面中未能找到 %s 元素" % (self,xpath))
     def get_select_element_by_xpath(self,div_xpath,drop_list_li_xpath,index):
         '''
         下拉控件封装
@@ -229,6 +241,9 @@ class BasePage(object):
         :return:
         '''
         self.driver.implicitly_wait(seconds)
+    def sleep_wait(self,seconds):
+        time.sleep(seconds)
+
     def mouse_move_to(self,x,y):
         '''
         :param x: 光标移动到的x坐标
